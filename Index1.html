@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirubasagar | Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Define CSS Variables for easy color/spacing changes */
+    --primary-color: #8a2be2; /* Blue Violet */
+    --secondary-color: #4b0082; /* Indigo */
+    --text-color: #222;
+    --light-bg: #f7f5fc;
+    --white: #fff;
+    --padding-sides: 10%;
+  }
+
+  /* --- General Styling --- */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+  }
+
+  /* --- Navigation Bar --- */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px var(--padding-sides);
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky; /* Changed from fixed to sticky for better mobile behavior */
+    top: 0;
+    width: 100%; /* Changed from 100% width to better control when sticky */
+    box-sizing: border-box; /* Added to include padding in width calculation */
+    z-index: 1000;
+  }
+
+  nav .logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Ensures phone icon aligns with links */
+  }
+
+  nav ul li {
+    margin-left: 25px;
+  }
+
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  /* Phone Icon Styling */
+  .phone {
+    /* Kept styling here but removed the `margin-left` from the media query */
+    margin-left: 20px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+  }
+
+  .phone a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+  }
+
+  .phone a:hover {
+    transform: scale(1.1); /* Corrected scale value */
+  }
+
+  /* --- Sections General --- */
+  section {
+    padding: 100px var(--padding-sides);
+  }
+
+  section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* --- Hero Section --- */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 150px; /* Increased padding top */
+    padding-bottom: 80px;
+    background: linear-gradient(135deg, #f9f9ff, #f3e7fe);
+  }
+
+  .hero-text {
+    max-width: 50%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+
+  .hero-text h1 span {
+    color: var(--primary-color);
+  }
+  
+  /* Combined h3 and p for better semantics */
+  .hero-text .tagline { 
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .hero-text p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .hero-buttons a {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--secondary-color);
+  }
+
+  .btn-secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+
+  .btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+  }
+
+  /* Profile Image */
+  .hero-image img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  }
+
+  /* --- About Section --- */
+  #about {
+    background-color: var(--white);
+  }
+
+  #about p {
+    color: #555;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.1rem;
+  }
+
+  /* --- Projects Section (General) --- */
+  #projects, #biproject { /* Targeted both project sections */
+    background-color: var(--light-bg);
+  }
+
+  /* Individual Project Styling */
+  .project {
+    text-align: left; /* Aligns project text to the left */
+    max-width: 900px;
+    margin: 40px auto; /* Centers projects and adds vertical space */
+    padding: 20px;
+    border-left: 5px solid var(--primary-color); /* Visual marker for projects */
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .project h3 {
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+  }
+
+  .project h4 {
+      color: #555;
+      margin-top: 20px;
+      margin-bottom: 5px;
+  }
+
+  .project ol {
+      padding-left: 20px; /* Adjusted list padding for better alignment */
+      color: #555;
+  }
+  
+  .project li {
+      margin-bottom: 5px;
+      line-height: 1.5;
+  }
+
+
+  /* --- BI Project Gallery --- */
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Increased min width */
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+  .project-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .project-info {
+    padding: 15px;
+  }
+
+  .project-info h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .project-info p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* --- Contact Section --- */
+  #contact {
+    padding: 50px var(--padding-sides);
+    background-color: var(--white);
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-info p {
+      font-size: 1.2rem;
+  }
+
+  .contact-info a {
+    text-decoration: none;
+    color: var(--primary-color); /* Changed color to match theme */
+    font-weight: 600;
+    margin: 0 15px;
+    transition: color 0.3s;
+  }
+
+  .contact-info a:hover {
+    color: var(--secondary-color);
+  }
+
+  /* --- Footer --- */
+  footer {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background-color: #f9f9ff;
+    font-size: 0.9rem;
+  }
+
+  /* --- Media Queries (Responsiveness) --- */
+  @media (max-width: 900px) {
+    section {
+        padding: 80px 5%; /* Adjusted padding for smaller screens */
+    }
+    
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding-top: 120px;
+    }
+
+    .hero-text {
+      max-width: 100%;
+    }
+
+    .hero-image {
+      margin-top: 40px;
+    }
+    
+    /* Center nav links on smaller screens */
+    nav ul {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap; /* Allows links to wrap if too many */
+    }
+
+    nav .logo {
+        display: none; /* Hide logo on small screens if space is tight */
+    }
+    
+    nav {
+        padding: 15px 5%;
+        justify-content: center;
+    }
+    
+    .project {
+        padding: 15px;
+        margin: 30px auto;
+    }
+    
+    .project-gallery {
+        grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <nav>
+<div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li> <li><a href="#biproject">BI Projects</a></li> <li><a href="#contact">Contact</a></li>
+
+      <li class="phone">
+        <a href="tel:+919360247037" title ="Call Me" aria-label="Call me at 9360247037">📞</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Kiruba Sagar</span></h1>
+      <p class="tagline">I am open to opportunities in Data Science, Data Analysis, Business Intelligence Development, Data Engineering, Machine Learning Engineering, Lead Generation, and Database Administration.</p>
+      <div class="hero-buttons">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/img.jpg" alt="Kiruba Sagar Profile Photo">
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m an aspiring Data Scientist with a strong foundation in Computer Science and a passion for extracting meaningful insights from data.
+        specialize in <strong> Data visualization, Data cleaning, and Predictive analytics</strong> using <strong>Python, SQL, Machine Learning, and Power BI</strong>.
+        My goal is to help organizations make <strong> data-driven decisions </strong> that improve performance and foster innovation.
+    </p>
+  </section>
+
+  <section id="projects">
+
+
+    <div class="project">
+      <h3>Twitter Sentiment Analysis</h3>
+      <p>
+        Developed a <strong> sentiment analysis model </strong> to classify tweets as positive, negative, or neutral using <strong> NLP and Machine learning</strong>. Focused on text preprocessing, feature extraction, and model evaluation to achieve high sentiment prediction accuracy. 
+      </p>
+      <h4>Methodology:</h4>
+      <ul>
+        <li>Data cleaning and preprocessing <strong> (lowercasing, punctuation & stopword removal, tokenization).</strong></li>
+        <li>Feature extraction using <strong> TF-IDF / Bag-of-Words </strong>.</li>
+        <li>Model building with <strong> Scikit-learn classifiers </strong> (Logistic Regression, Naive Bayes, SVM).</li>
+        <li>Evaluated performance using <strong> precision, recall, F1-score, and confusion matrix </strong>.</li>
+        <li>Visualized sentiment distribution and word frequency for insights.</li>
+        <li>Achieved model accuracy of around <strong> 85–90% </strong> on test data.</li>
+      </ul>
+    </div>
+
+     <div class="project">
+      <h3>Product Sales Analysis (Classification)</h3> <p>
+        Developed a <strong> classification model </strong> to predict product sales conversion status <strong>(e.g., 'CONVERTED' vs. 'LOST')</strong> using a dataset of 7,420 sales records retrieved from a <strong> MySQL database </strong>.
+      </p>
+      <h4>Methodology:</h4>
+      <ul>
+        <li>Connected to a live <strong> MySQL database </strong> and cleaned data using <strong> Pandas and NumPy </strong>.</li>
+        <li>Performed <strong> EDA and visualization with Seaborn and Matplotlib </strong> to uncover product and agent patterns.</li>
+        <li>Applied <strong> Machine Learning models — Logistic Regression, Random Forest, and Decision Tree </strong> — to predict sales performance.</li>
+        <li>Used <strong> SMOTE </strong> for data balancing, achieving an <strong> accuracy of 87% </strong> on the final model.</li>
+        <li>Stack: Python, MySQL, Pandas, Seaborn, Matplotlib, Scikit-learn, SMOTE</li>
+      </ul>
+    </div>
+
+
+    <div class="project">
+      <h3>RAG Based ChatBot</h3>
+      <ul>
+      <li>Designed and implemented a <strong> Retrieval-Augmented Generation (RAG) </strong> pipeline to improve contextual accuracy in chatbot responses.</li>
+      <li>Used <strong> LangChain </strong> framework for chaining retrieval and generation tasks efficiently.</li>
+      <li>Integrated <strong> Groq API (Gemma2-9B-IT model) </strong> for low-latency <strong> LLM-based question answering.</strong> </li>
+      <li>Employed <strong> FAISS vector database </strong> for document storage and similarity-based context retrieval.</li>
+      <li>Used <strong> Ollama Embeddings (nomic-embed-text:v1.5) </strong> to convert text data into semantic vector representations.</li>
+      <li>Built an interactive <strong> Streamlit web interface </strong> for real-time user interaction and response visualization.</li>
+      <li>Implemented environment variable management via dotenv (.env) for secure API key handling.</li>
+      <h4> Technologies Used </h4>
+      <li><strong> Python · LangChain · Groq API · FAISS · Ollama Embeddings · Streamlit · dotenv </strong> </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="biproject"> <h2>BI Projects</h2> <div class="project-gallery">
+      <div class="project-card">
+        <img src="images/Blinkit.png" alt="Blinkit Sales Dashboard Preview">
+        <div class="project-info">
+          <h3>Blinkit Sales Dashboard</h3>
+          <p>A Power BI  dashboard analyzing product sales, profit margins, and category performance for quick commerce insights.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-info">
+      <p>
+        <a href="mailto:kirubasagar@email.com">Email</a> |
+        <a href="https://www.linkedin.com/in/kirubasagar-p/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+        <a href="https://github.com/Kirubasagar-p?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+  </section>
+
+
+  <footer>
+    © 2025 Kiruba Sagar. All rights reserved.
+  </footer>
+
+</body>
+</html>
